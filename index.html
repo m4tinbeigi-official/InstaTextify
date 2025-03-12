@@ -23,7 +23,7 @@
                 <textarea id="userText" class="form-control" rows="3" placeholder="مثلاً: سلام دنیا!"></textarea>
             </div>
             <div class="row mb-3">
-                <div class="col-md-4">
+                <div class="col-md-4 col-12 mb-2">
                     <label for="fontSelect" class="form-label">انتخاب فونت:</label>
                     <select id="fontSelect" class="form-select">
                         <option value="Vazir">وزیر</option>
@@ -31,11 +31,11 @@
                         <option value="Samim">صمیم</option>
                     </select>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-6 mb-2">
                     <label for="fontSize" class="form-label">سایز فونت:</label>
-                    <input type="number" id="fontSize" class="form-control" value="16" min="10" max="50">
+                    <input type="number" id="fontSize" class="form-control" value="20" min="10" max="50">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-6 mb-2">
                     <label for="fontColor" class="form-label">رنگ متن:</label>
                     <input type="color" id="fontColor" class="form-control form-control-color" value="#000000">
                 </div>
@@ -44,10 +44,9 @@
                 <label class="form-label">پیش‌نمایش:</label>
                 <div id="preview" class="p-3 text-center">متن اینجا نمایش داده میشه</div>
             </div>
-            <button id="copyImageButton" class="btn btn-primary w-100">تبدیل به عکس و کپی</button>
-            <div id="copyMessage" class="mt-2 text-success text-center" style="display: none;">عکس با موفقیت کپی شد!</div>
+            <button id="generateImageButton" class="btn btn-primary w-100">تبدیل به عکس و دانلود</button>
             <div id="downloadLink" class="mt-2 text-center" style="display: none;">
-                <a href="#" id="downloadAnchor" download="instastory.png">دانلود عکس (در صورت مشکل کپی)</a>
+                <a href="#" id="downloadAnchor" class="btn btn-success" download="instastory.png">دانلود عکس</a>
             </div>
         </div>
     </div>
