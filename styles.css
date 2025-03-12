@@ -4,7 +4,7 @@ body {
 }
 
 #preview {
-    background-color: #fff;
+    background-color: transparent; /* پس‌زمینه شفاف */
     min-height: 100px;
     direction: rtl;
 }

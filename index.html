@@ -11,6 +11,8 @@
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v2.0.1/dist/font-face.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- اضافه کردن html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
     <div class="container my-5">
@@ -40,10 +42,13 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">پیش‌نمایش:</label>
-                <div id="preview" class="p-3 border rounded text-center">متن اینجا نمایش داده میشه</div>
+                <div id="preview" class="p-3 text-center">متن اینجا نمایش داده میشه</div>
             </div>
-            <button id="copyButton" class="btn btn-primary w-100">کپی به کلیپ‌بورد</button>
-            <div id="copyMessage" class="mt-2 text-success text-center" style="display: none;">متن با موفقیت کپی شد!</div>
+            <button id="copyImageButton" class="btn btn-primary w-100">تبدیل به عکس و کپی</button>
+            <div id="copyMessage" class="mt-2 text-success text-center" style="display: none;">عکس با موفقیت کپی شد!</div>
+            <div id="downloadLink" class="mt-2 text-center" style="display: none;">
+                <a href="#" id="downloadAnchor" download="instastory.png">دانلود عکس (در صورت مشکل کپی)</a>
+            </div>
         </div>
     </div>
 
