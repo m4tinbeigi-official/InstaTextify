@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const fontSize = document.getElementById('fontSize');
     const fontColor = document.getElementById('fontColor');
     const preview = document.getElementById('preview');
-    const generateImageButton = document.getElementById('generateImageButton');
+    const copyImageButton = document.getElementById('copyImageButton');
+    const downloadImageButton = document.getElementById('downloadImageButton');
+    const copyMessage = document.getElementById('copyMessage');
     const downloadLink = document.getElementById('downloadLink');
     const downloadAnchor = document.getElementById('downloadAnchor');
 
@@ -23,20 +25,47 @@ document.addEventListener('DOMContentLoaded', () => {
     fontSize.addEventListener('input', updatePreview);
     fontColor.addEventListener('change', updatePreview);
 
-    // تبدیل به عکس و ارائه لینک دانلود
-    generateImageButton.addEventListener('click', () => {
+    // تابع مشترک برای تولید تصویر
+    function generateImage(callback) {
         html2canvas(preview, {
             backgroundColor: null, // پس‌زمینه شفاف
             scale: 2, // کیفیت بالاتر
             useCORS: true, // برای لود فونت‌ها
-            logging: false // جلوگیری از لاگ اضافی
+            logging: false
         }).then(canvas => {
-            const url = canvas.toDataURL('image/png');
-            downloadAnchor.href = url;
-            downloadLink.style.display = 'block';
+            canvas.toBlob(blob => {
+                callback(blob, canvas.toDataURL('image/png'));
+            }, 'image/png');
         }).catch(err => {
             console.error('خطا در تولید عکس: ', err);
             alert('مشکلی در تولید عکس پیش اومد. لطفاً دوباره امتحان کن.');
+        });
+    }
+
+    // کپی به کلیپ‌بورد
+    copyImageButton.addEventListener('click', () => {
+        generateImage((blob, url) => {
+            const item = new ClipboardItem({ 'image/png': blob });
+            navigator.clipboard.write([item]).then(() => {
+                copyMessage.style.display = 'block';
+                downloadLink.style.display = 'none';
+                setTimeout(() => {
+                    copyMessage.style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                console.error('خطا در کپی: ', err);
+                downloadAnchor.href = url;
+                downloadLink.style.display = 'block';
+            });
+        });
+    });
+
+    // دانلود عکس
+    downloadImageButton.addEventListener('click', () => {
+        generateImage((blob, url) => {
+            downloadAnchor.href = url;
+            downloadAnchor.click(); // دانلود خودکار
+            downloadLink.style.display = 'none';
         });
     });
 
