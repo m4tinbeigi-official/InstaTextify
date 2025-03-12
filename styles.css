@@ -1,0 +1,10 @@
+body {
+    font-family: 'Vazir', sans-serif;
+    background-color: #f8f9fa;
+}
+
+#preview {
+    background-color: #fff;
+    min-height: 100px;
+    direction: rtl;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaTextify</title>
+    <!-- بوت‌استرپ -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- فونت‌های اوپن‌سورس فارسی -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@v2.0.1/dist/font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">InstaTextify</h1>
+        <div class="card p-4">
+            <div class="mb-3">
+                <label for="userText" class="form-label">متن خودت رو اینجا بنویس:</label>
+                <textarea id="userText" class="form-control" rows="3" placeholder="مثلاً: سلام دنیا!"></textarea>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="fontSelect" class="form-label">انتخاب فونت:</label>
+                    <select id="fontSelect" class="form-select">
+                        <option value="Vazir">وزیر</option>
+                        <option value="Shabnam">شبنم</option>
+                        <option value="Samim">صمیم</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="fontSize" class="form-label">سایز فونت:</label>
+                    <input type="number" id="fontSize" class="form-control" value="16" min="10" max="50">
+                </div>
+                <div class="col-md-4">
+                    <label for="fontColor" class="form-label">رنگ متن:</label>
+                    <input type="color" id="fontColor" class="form-control form-control-color" value="#000000">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">پیش‌نمایش:</label>
+                <div id="preview" class="p-3 border rounded text-center">متن اینجا نمایش داده میشه</div>
+            </div>
+            <button id="copyButton" class="btn btn-primary w-100">کپی به کلیپ‌بورد</button>
+            <div id="copyMessage" class="mt-2 text-success text-center" style="display: none;">متن با موفقیت کپی شد!</div>
+        </div>
+    </div>
+
+    <!-- اسکریپت‌ها -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
